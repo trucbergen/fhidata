@@ -1,0 +1,45 @@
+---
+title: "Datasets"
+author: "Richard White"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Datasets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+There are four datasets available:
+
+- norway_population: Population data
+- norway_locations: One row for each municipality containing columns 'municip_code', 'municip_name', 'county_code', and 'county_name'
+- norway_locations_long: One column for 'code', one column for 'name'
+- norway_municip_merging: Used to convert original municipalities into current municipalities
+
+Some of these datasets (`norway_population`, `norway_locations`, and `norway_locations_long`) have the option to display the data using municipality codes as they were originally or as they are today (after the merging of municipalities). 
+
+There are two ways to obtain the data, either by specifying the entire dataset's name (`dataset_current` or `dataset_original`) or by using the argument `is_current_municips`.
+
+```{r}
+fhidata::get_data("norway_population", is_current_municips=TRUE)
+fhidata::get_data("norway_population_current")
+
+fhidata::get_data("norway_population", is_current_municips=FALSE)
+fhidata::get_data("norway_population_original")
+```
+
+Here we can see the current available datasets:
+
+```{r}
+fhidata::get_data("norway_population", is_current_municips=TRUE)
+fhidata::get_data("norway_locations", is_current_municips=TRUE)
+fhidata::get_data("norway_locations_long", is_current_municips=TRUE)
+fhidata::get_data("norway_municip_merging")
+```
