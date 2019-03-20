@@ -1,4 +1,11 @@
 language: r
+
+repos:
+  CRAN: https://cloud.r-project.org
+  folkehelseinstituttet: https://folkehelseinstituttet.github.io/drat/
+  euromomo: https://euromomonetwork.github.io/drat/
+  raubreywhite: https://raubreywhite.github.io/drat/
+
 r_packages:
 - covr
 - drat
