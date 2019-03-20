@@ -14,6 +14,7 @@ If \code{is_current_municips} is \code{TRUE}/`FALSE``, then the following option
 \item norway_locations: One row for each municipality containing columns 'municip_code', 'municip_name', 'county_code', and 'county_name'
 \item norway_locations_long: One column for 'code', one column for 'name'
 \item norway_municip_merging: Used to convert original municipalities into current municipalities
+\item norway_map_counties: Long/lats for Norwegian county borders
 }
 
 Some of these datasets (\code{norway_population}, \code{norway_locations}, and \code{norway_locations_long}) have the option to display the data using municipality codes as they were originally or as they are today (after the merging of municipalities).
@@ -27,9 +28,10 @@ If \code{is_current_municips} is `NULL``, then the following options are allowed
 \item norway_locations_long_current
 \item norway_locations_long_original
 \item norway_municip_merging
+\item norway_map_counties
 }}
 
-\item{is_current_municips}{If this is \code{NULL}, then \code{name} is used exclusively. If this is \code{, then `name=name_current`, and if this is} then \code{name=name_original}. This lets you work more programatically.}
+\item{is_current_municips}{If this is \code{NULL}, then \code{name} is used exclusively. If this is \code{, then `name=name_current`, and if this is } then \code{name=name_original}. This lets you work more programatically.}
 
 \item{...}{Not used currently}
 }

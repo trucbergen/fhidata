@@ -1,4 +1,4 @@
-Package: fhidata 
+Package: fhidata
 Title: Structural Data for Norway
 Version: 2019.3.12
 Authors@R: person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre"))
@@ -7,10 +7,12 @@ Depends: R (>= 3.3.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: data.table, stringr, glue, lubridate, readxl, zoo, crayon, broom, fs, utils
+Imports: data.table, stringr, glue, lubridate, readxl, zoo, crayon, fs, utils
 Suggests: testthat,
     knitr,
     rmarkdown,
-    GADMTools
-RoxygenNote: 6.0.1
+    geojsonio,
+    broom,
+    rmapshaper
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr

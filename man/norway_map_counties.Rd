@@ -4,7 +4,7 @@
 \alias{norway_map_counties}
 \title{norway_map_counties}
 \usage{
-norway_map_counties()
+norway_map_counties(save_loc = file.path("inst", "createddata"))
 }
 \description{
 norway_map_counties

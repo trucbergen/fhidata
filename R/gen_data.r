@@ -360,6 +360,7 @@ gen_norway_population <- function(is_current_municips = TRUE,
 #' - norway_locations: One row for each municipality containing columns 'municip_code', 'municip_name', 'county_code', and 'county_name'
 #' - norway_locations_long: One column for 'code', one column for 'name'
 #' - norway_municip_merging: Used to convert original municipalities into current municipalities
+#' - norway_map_counties: Long/lats for Norwegian county borders
 #'
 #' Some of these datasets (`norway_population`, `norway_locations`, and `norway_locations_long`) have the option to display the data using municipality codes as they were originally or as they are today (after the merging of municipalities).
 #'
@@ -371,6 +372,7 @@ gen_norway_population <- function(is_current_municips = TRUE,
 #' - norway_locations_long_current
 #' - norway_locations_long_original
 #' - norway_municip_merging
+#' - norway_map_counties
 #' @param is_current_municips If this is `NULL`, then `name` is used exclusively. If this is ``, then `name=name_current`, and if this is `` then `name=name_original`. This lets you work more programatically.
 #' @param ... Not used currently
 #' @examples
@@ -404,14 +406,10 @@ get_data <- function(name, is_current_municips=NULL, ...){
   }
 
   if (is.null(data_storage[[working_name]])) {
-    if(working_name == "norway_map_counties"){
-      data_storage[[working_name]] <- norway_map_counties()
-    } else {
-      data_storage[[working_name]] <- readRDS(system.file(
-        "createddata",
-        glue::glue("{working_name}.rds"),
-        package = "fhidata"))
-    }
+    data_storage[[working_name]] <- readRDS(system.file(
+      "createddata",
+      glue::glue("{working_name}.rds"),
+      package = "fhidata"))
   }
 
   return(data_storage[[working_name]])

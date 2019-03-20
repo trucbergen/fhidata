@@ -1,45 +1,21 @@
 #' norway_map_counties
-norway_map_counties <- function() {
-  if (!requireNamespace("GADMTools", quietly = TRUE)) {
-    stop("Package \"GADMTools\" needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
+norway_map_counties <- function(save_loc = file.path("inst", "createddata")) {
+  require_namespace(c("geojsonio","broom"))
 
-  id <- NULL
-  ind <- NULL
+  spdf <- geojsonio::geojson_read(
+    system.file("extdata", "Fylker19.geojson", package = "fhidata"),
+    what = "sp")
 
-  basefile <- options("shapefiles")$shapefiles
-  if(is.null(basefile)){
-    basefile <- tempdir()
-  } else if(!fs::dir_exists(basefile)){
-    basefile <- tempdir()
-  }
-  nor = GADMTools::gadm_sp_loadCountries("NOR", level=1, basefile=basefile)
+  spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.1)
 
-  spdf_fortified <- broom::tidy(nor$spdf)
+  spdf_fortified <- broom::tidy(spdf_simple, region = "fylkesnummer")
+
   setDT(spdf_fortified)
-  mappings = list(
-    'county02'='NOR_1',
-    'county18'='NOR_2',
-    'county05'='NOR_3',
-    'county03'='NOR_4',
-    'county11'='NOR_5',
-    'county14'='NOR_6',
-    'county50'=c('NOR_7','NOR_19'),
-    'county08'='NOR_8',
-    'county19'='NOR_9',
-    'county10'='NOR_10',
-    'county07'='NOR_11',
-    'county01'='NOR_12',
-    'county09'='NOR_13',
-    'county06'='NOR_14',
-    'county20'='NOR_15',
-    'county04'='NOR_16',
-    'county12'='NOR_17',
-    'county15'='NOR_18'
-  )
-  spdf_fortified[utils::stack(mappings), on = "id==values", id := ind]
-  setnames(spdf_fortified, "id", "county_code")
+  spdf_fortified[,county_code:=sprintf("county%s",id)]
 
-  return(spdf_fortified)
+  if (dir.exists(save_loc)) {
+    try(saveRDS(spdf_fortified, file.path(save_loc, "norway_map_counties.rds")), TRUE)
+  }
+
+  return(invisible(spdf_fortified))
 }
