@@ -6,6 +6,11 @@ repos:
   euromomo: https://euromomonetwork.github.io/drat/
   raubreywhite: https://raubreywhite.github.io/drat/
 
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
+
 r_packages:
 - covr
 - drat

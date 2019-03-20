@@ -1,10 +1,5 @@
 #' norway_map_counties
 norway_map_counties <- function() {
-  if (!requireNamespace("GADMTools", quietly = TRUE)) {
-    stop("Package \"GADMTools\" needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
-
   id <- NULL
   ind <- NULL
 
