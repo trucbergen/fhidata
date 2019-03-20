@@ -38,12 +38,12 @@ norway_map_municips <- function(save_loc = file.path("inst", "createddata")) {
     what = "sp"
   )
 
-  spdf_simple <- rmapshaper::ms_simplify(rgeos::gBuffer(spdf,byid=TRUE, width=0), keep = 0.2)
+  spdf_simple <- rmapshaper::ms_simplify(rgeos::gBuffer(spdf, byid = TRUE, width = 0), keep = 0.2)
 
   spdf_fortified <- broom::tidy(spdf_simple, region = "kommunenummer")
 
   setDT(spdf_fortified)
-  spdf_fortified[, location_code := sprintf("municip%s", formatC(as.numeric(id), width=4, flag="0"))]
+  spdf_fortified[, location_code := sprintf("municip%s", formatC(as.numeric(id), width = 4, flag = "0"))]
 
   if (dir.exists(save_loc)) {
     try(saveRDS(spdf_fortified, file.path(save_loc, "norway_map_municips.rds")), TRUE)

@@ -14,7 +14,8 @@ gen_norway_locations <- function(save_loc = file.path("inst", "createddata")) {
 
   norway_locations[, is_current := is.na(year_end)]
 
-  norway_locations <- unique(norway_locations[
+  norway_locations <- unique(norway_locations
+  [
     ,
     c("is_current", "municip_code", "municip_name", "county_code", "county_name")
   ])
