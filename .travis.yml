@@ -10,8 +10,6 @@ addons:
   apt:
     packages:
       - libudunits2-dev
-      - libgdal-dev
-      - libproj-dev
 
 r_packages:
 - covr
