@@ -394,7 +394,8 @@ get_data <- function(name, is_current_municips=NULL, ...){
     "norway_locations_original",
     "norway_locations_long_current",
     "norway_locations_long_original",
-    "norway_municip_merging"
+    "norway_municip_merging",
+    "norway_map_counties"
   )
 
   valid_names_with_ticks <- glue::glue("\u2713 {valid_names}")
@@ -403,10 +404,14 @@ get_data <- function(name, is_current_municips=NULL, ...){
   }
 
   if (is.null(data_storage[[working_name]])) {
-    data_storage[[working_name]] <- readRDS(system.file(
-      "createddata",
-      glue::glue("{working_name}.rds"),
-      package = "fhidata"))
+    if(working_name == "norway_map_counties"){
+      data_storage[[working_name]] <- norway_map_counties()
+    } else {
+      data_storage[[working_name]] <- readRDS(system.file(
+        "createddata",
+        glue::glue("{working_name}.rds"),
+        package = "fhidata"))
+    }
   }
 
   return(data_storage[[working_name]])
