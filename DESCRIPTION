@@ -13,6 +13,7 @@ Suggests: testthat,
     rmarkdown,
     geojsonio,
     broom,
-    rmapshaper
+    rmapshaper,
+    mapproj
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

@@ -1,6 +1,10 @@
 #' norway_map_counties
+#' https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734
+#' @param save_loc Location to save file to
 norway_map_counties <- function(save_loc = file.path("inst", "createddata")) {
-  require_namespace(c("geojsonio","broom"))
+  id <- NULL
+
+  require_namespace(c("geojsonio","broom","rmapshaper"))
 
   spdf <- geojsonio::geojson_read(
     system.file("extdata", "Fylker19.geojson", package = "fhidata"),

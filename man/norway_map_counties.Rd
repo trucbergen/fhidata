@@ -6,6 +6,9 @@
 \usage{
 norway_map_counties(save_loc = file.path("inst", "createddata"))
 }
+\arguments{
+\item{save_loc}{Location to save file to}
+}
 \description{
 norway_map_counties
 }

@@ -12,6 +12,7 @@ travis/*
 .travis.yml
 R/.Rapp.history
 inst/.DS_Store
+inst/extdata
 tests/.DS_Store
 tests/testthat/.DS_Store
 tests/testthat/data/.DS_Store
