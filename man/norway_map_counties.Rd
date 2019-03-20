@@ -2,7 +2,8 @@
 % Please edit documentation in R/gen_map.R
 \name{norway_map_counties}
 \alias{norway_map_counties}
-\title{norway_map_counties}
+\title{norway_map_counties
+https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
 \usage{
 norway_map_counties(save_loc = file.path("inst", "createddata"))
 }
@@ -11,4 +12,5 @@ norway_map_counties(save_loc = file.path("inst", "createddata"))
 }
 \description{
 norway_map_counties
+https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734
 }
