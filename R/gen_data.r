@@ -359,6 +359,7 @@ gen_norway_population <- function(is_current_municips = TRUE,
 #' - norway_locations_long: One column for 'code', one column for 'name'
 #' - norway_municip_merging: Used to convert original municipalities into current municipalities
 #' - norway_map_counties: Long/lats for Norwegian county borders
+#' - norway_map_municips: Long/lats for Norwegian municipality borders
 #'
 #' Some of these datasets (`norway_population`, `norway_locations`, and `norway_locations_long`) have the option to display the data using municipality codes as they were originally or as they are today (after the merging of municipalities).
 #'
@@ -371,6 +372,7 @@ gen_norway_population <- function(is_current_municips = TRUE,
 #' - norway_locations_long_original
 #' - norway_municip_merging
 #' - norway_map_counties
+#' - norway_map_municips
 #' @param is_current_municips If this is `NULL`, then `name` is used exclusively. If this is ``, then `name=name_current`, and if this is `` then `name=name_original`. This lets you work more programatically.
 #' @param ... Not used currently
 #' @examples
@@ -394,7 +396,8 @@ get_data <- function(name, is_current_municips = NULL, ...) {
     "norway_locations_long_current",
     "norway_locations_long_original",
     "norway_municip_merging",
-    "norway_map_counties"
+    "norway_map_counties",
+    "norway_map_municips"
   )
 
   valid_names_with_ticks <- glue::glue("\u2713 {valid_names}")
