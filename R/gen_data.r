@@ -9,28 +9,28 @@ gen_norway_locations <- function(save_loc = file.path("inst", "createddata")) {
 
   norway_locations <- readxl::read_excel(
     system.file("extdata", "norway_locations.xlsx", package = "fhidata")
-    )
+  )
   setDT(norway_locations)
 
-  norway_locations[,is_current:=is.na(year_end)]
+  norway_locations[, is_current := is.na(year_end)]
 
-  norway_locations <- unique(norway_locations[,
-    c("is_current","municip_code", "municip_name", "county_code", "county_name")
-    ])
+  norway_locations <- unique(norway_locations[
+    ,
+    c("is_current", "municip_code", "municip_name", "county_code", "county_name")
+  ])
 
   if (dir.exists(save_loc)) {
     # Current municipalities
     try(saveRDS(
-      norway_locations[is_current==TRUE,-"is_current"],
+      norway_locations[is_current == TRUE, -"is_current"],
       file.path(save_loc, "norway_locations_current.rds")
     ), TRUE)
 
     # All/original municipalities
     try(saveRDS(
-      norway_locations[,-"is_current"],
+      norway_locations[, -"is_current"],
       file.path(save_loc, "norway_locations_original.rds")
     ), TRUE)
-
   }
 
   return(invisible(norway_locations))
@@ -39,10 +39,9 @@ gen_norway_locations <- function(save_loc = file.path("inst", "createddata")) {
 #' Creates the norway_locations data.table
 #' @param is_current_municips Do you want the population file to contain the current municipalities (i.e. after municipal merging) or the original municipalities that existed in that year?
 #' @param save_loc Location to save file to
-gen_norway_locations_long <- function(is_current_municips=TRUE,
+gen_norway_locations_long <- function(is_current_municips = TRUE,
                                       save_loc = file.path("inst", "createddata")) {
-
-  if(is_current_municips){
+  if (is_current_municips) {
     final_name <- "norway_locations_long_current"
     mid_name <- "norway_locations_current"
   } else {
@@ -59,10 +58,9 @@ gen_norway_locations_long <- function(is_current_municips=TRUE,
 
   retval <- unique(rbind(a1, a2, b, c))
 
-  try(saveRDS(retval,file.path(save_loc, glue::glue("{final_name}.rds"))), TRUE)
+  try(saveRDS(retval, file.path(save_loc, glue::glue("{final_name}.rds"))), TRUE)
 
   return(invisible(retval))
-
 }
 
 #' Creates the norway_municip_merging (kommunesammenslaaing) data.table
@@ -154,8 +152,7 @@ gen_norway_municip_merging <- function(save_loc = file.path("inst", "createddata
 #' @param save_loc Location to save file to
 #' @import data.table
 gen_norway_population <- function(is_current_municips = TRUE,
-                                  save_loc = file.path("inst", "createddata")
-                                  ) {
+                                  save_loc = file.path("inst", "createddata")) {
 
   # variables used in data.table functions in this function
   . <- NULL
@@ -282,14 +279,14 @@ gen_norway_population <- function(is_current_municips = TRUE,
     pop <- rbind(pop, copiedYears)
   }
 
-  if(is_current_municips){
+  if (is_current_municips) {
     norway_merging <- get_data("norway_municip_merging")
     pop <- merge(
       pop,
       norway_merging[, c("year", "municip_code_current", "municip_code_original")],
       by.x = c("municip_code", "year"),
       by.y = c("municip_code_original", "year")
-      )
+    )
     pop <- pop[, .(pop = sum(pop)),
       keyby = .(
         year,
@@ -303,47 +300,48 @@ gen_norway_population <- function(is_current_municips = TRUE,
   } else {
     file_name <- "norway_population_original.rds"
   }
-  pop[,level:="Municipality"]
+  pop[, level := "Municipality"]
 
   counties <- merge(
     pop,
-    get_data("norway_locations",is_current_municips = FALSE)[,c("municip_code","county_code")],
-    by="municip_code")
+    get_data("norway_locations", is_current_municips = FALSE)[, c("municip_code", "county_code")],
+    by = "municip_code"
+  )
 
   check_ref_to_new(
-    xref=unique(pop$municip_code),
+    xref = unique(pop$municip_code),
     xnew = unique(counties$municip_code)
-      )
+  )
 
-  if(nrow(counties) != nrow(pop)){
+  if (nrow(counties) != nrow(pop)) {
     stop("nrow(counties) != nrow(pop)")
   }
 
-  counties <- counties[,.(
-    pop=sum(pop)
-  ),keyby=.(
+  counties <- counties[, .(
+    pop = sum(pop)
+  ), keyby = .(
     year,
-    municip_code=county_code,
+    municip_code = county_code,
     age,
     imputed
   )]
-  counties[,level:="County"]
+  counties[, level := "County"]
 
-  norway <- pop[,.(
-    pop=sum(pop)
-  ),keyby=.(
+  norway <- pop[, .(
+    pop = sum(pop)
+  ), keyby = .(
     year,
     age,
     imputed
   )]
-  norway[,municip_code:="norway"]
-  norway[,level:="National"]
+  norway[, municip_code := "norway"]
+  norway[, level := "National"]
 
-  pop <- rbind(norway,counties,pop)
+  pop <- rbind(norway, counties, pop)
 
-  final_order <- c("year","municip_code","level","age","pop","imputed")
-  setorderv(pop,final_order)
-  setcolorder(pop,final_order)
+  final_order <- c("year", "municip_code", "level", "age", "pop", "imputed")
+  setorderv(pop, final_order)
+  setcolorder(pop, final_order)
   setnames(pop, "municip_code", "location_code")
 
   if (dir.exists(save_loc)) {
@@ -376,16 +374,15 @@ gen_norway_population <- function(is_current_municips = TRUE,
 #' @param is_current_municips If this is `NULL`, then `name` is used exclusively. If this is ``, then `name=name_current`, and if this is `` then `name=name_original`. This lets you work more programatically.
 #' @param ... Not used currently
 #' @examples
-#' get_data("norway_population", is_current_municips=TRUE)
+#' get_data("norway_population", is_current_municips = TRUE)
 #' get_data("norway_population_current")
 #' @md
 #' @export
-get_data <- function(name, is_current_municips=NULL, ...){
-
-  if(is.null(is_current_municips)){
+get_data <- function(name, is_current_municips = NULL, ...) {
+  if (is.null(is_current_municips)) {
     working_name <- name
   } else {
-    tag <- ifelse(is_current_municips,"current","original")
+    tag <- ifelse(is_current_municips, "current", "original")
     working_name <- glue::glue("{name}_{tag}")
   }
 
@@ -401,7 +398,7 @@ get_data <- function(name, is_current_municips=NULL, ...){
   )
 
   valid_names_with_ticks <- glue::glue("\u2713 {valid_names}")
-  if(!working_name %in% valid_names){
+  if (!working_name %in% valid_names) {
     stop(glue::glue("\n\n\u2716 '{name}' -> '{working_name}' not in: \n{glue::collapse(valid_names_with_ticks,sep='\n')}"))
   }
 
@@ -409,7 +406,8 @@ get_data <- function(name, is_current_municips=NULL, ...){
     data_storage[[working_name]] <- readRDS(system.file(
       "createddata",
       glue::glue("{working_name}.rds"),
-      package = "fhidata"))
+      package = "fhidata"
+    ))
   }
 
   return(data_storage[[working_name]])
@@ -422,10 +420,9 @@ gen_data <- function(save_loc = file.path("inst", "createddata")) {
 
   gen_norway_locations(save_loc)
 
-  gen_norway_locations_long(is_current_municips = TRUE, save_loc=save_loc)
-  gen_norway_locations_long(is_current_municips = FALSE, save_loc=save_loc)
+  gen_norway_locations_long(is_current_municips = TRUE, save_loc = save_loc)
+  gen_norway_locations_long(is_current_municips = FALSE, save_loc = save_loc)
 
   gen_norway_population(is_current_municips = TRUE, save_loc)
   gen_norway_population(is_current_municips = FALSE, save_loc)
 }
-

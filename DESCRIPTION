@@ -1,6 +1,6 @@
 Package: fhidata
 Title: Structural Data for Norway
-Version: 2019.3.12
+Version: 2019.3.20
 Authors@R: person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre"))
 Description: Structural data for Norway. Datasets relating to population in municipalities, municipality/county matchings, and how different municipalities have merged over time from 2006 through to today.
 Depends: R (>= 3.3.0)
