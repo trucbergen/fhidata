@@ -1,5 +1,7 @@
 #' norway_map_counties
 norway_map_counties <- function() {
+  id <- NULL
+  ind <- NULL
 
   basefile <- options("shapefiles")$shapefiles
   if(is.null(basefile)){
@@ -31,7 +33,7 @@ norway_map_counties <- function() {
     'county12'='NOR_17',
     'county15'='NOR_18'
   )
-  spdf_fortified[stack(mappings), on = "id==values", id := ind]
+  spdf_fortified[utils::stack(mappings), on = "id==values", id := ind]
   setnames(spdf_fortified, "id", "county_code")
 
   return(spdf_fortified)
