@@ -44,7 +44,7 @@ gen_norway_locations <- function(is_current_municips = TRUE) {
     c("is_current", "municip_code", "municip_name", "county_code", "county_name")
   ])
 
-  if(is_current_municips){
+  if (is_current_municips) {
     return(norway_locations[is_current == TRUE, -"is_current"])
   } else {
     return(norway_locations[, -"is_current"])

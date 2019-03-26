@@ -170,7 +170,7 @@ gen_countries_nb_to_en <- function() {
     "Zimbabwe" = "Zimbabwe"
   )
 
-  retval <- data.table(nb=names(vec),en=vec)
+  retval <- data.table(nb = names(vec), en = vec)
 
   return(invisible(retval))
 }

@@ -18,8 +18,8 @@
 #' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
 #' @examples
 #' library(ggplot2)
-#' q <- ggplot(mapping=aes(x=long, y=lat, group=group, fill=location_code))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties, color="black")
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties, color = "black")
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -45,8 +45,8 @@
 #' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
 #' @examples
 #' library(ggplot2)
-#' q <- ggplot(mapping=aes(x=long, y=lat, group=group))
-#' q <- q + geom_polygon(data = fhidata::norway_map_municips, color="black")
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
+#' q <- q + geom_polygon(data = fhidata::norway_map_municips, color = "black")
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q

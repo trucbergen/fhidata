@@ -31,8 +31,8 @@ gen_norway_locations_long <- function(is_current_municips = TRUE) {
 
   a1 <- data.table(location_code = "norway", location_name = "Norway")
   a2 <- data.table(location_code = "norge", location_name = "Norge")
-  b <- gen_norway_locations(is_current_municips=is_current_municips)[, c("municip_code", "municip_name")]
-  c <- gen_norway_locations(is_current_municips=is_current_municips)[, c("county_code", "county_name")]
+  b <- gen_norway_locations(is_current_municips = is_current_municips)[, c("municip_code", "municip_name")]
+  c <- gen_norway_locations(is_current_municips = is_current_municips)[, c("county_code", "county_name")]
   setnames(b, c("location_code", "location_name"))
   setnames(c, c("location_code", "location_name"))
 
