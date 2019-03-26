@@ -12,7 +12,7 @@
 #' \describe{
 #' \item{year}{Year.}
 #' \item{location_code}{The location code.}
-#' \item{level}{National/County/Municipality.}
+#' \item{level}{cational/county/municipality.}
 #' \item{age}{1 year ages from 0 to 105.}
 #' \item{pop}{Number of people.}
 #' \item{imputed}{FALSE if real data. TRUE if it is the last real data point carried forward.}
@@ -195,7 +195,7 @@ gen_norway_population <- function(is_current_municips = TRUE) {
   } else {
     file_name <- "norway_population_original.rds"
   }
-  pop[, level := "Municipality"]
+  pop[, level := "municipality"]
 
   counties <- merge(
     pop,
@@ -220,7 +220,7 @@ gen_norway_population <- function(is_current_municips = TRUE) {
     age,
     imputed
   )]
-  counties[, level := "County"]
+  counties[, level := "county"]
 
   norway <- pop[, .(
     pop = sum(pop)
@@ -230,7 +230,7 @@ gen_norway_population <- function(is_current_municips = TRUE) {
     imputed
   )]
   norway[, municip_code := "norway"]
-  norway[, level := "National"]
+  norway[, level := "national"]
 
   pop <- rbind(norway, counties, pop)
 

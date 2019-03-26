@@ -27,8 +27,8 @@ libraries. This data is licensed under Creative Commons 0.
 }
 \examples{
 library(ggplot2)
-q <- ggplot(mapping=aes(x=long, y=lat, group=group, fill=location_code))
-q <- q + geom_polygon(data = fhidata::norway_map_counties, color="black")
+q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
+q <- q + geom_polygon(data = fhidata::norway_map_counties, color = "black")
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q
