@@ -23,4 +23,7 @@ norway_municip_merging
 \description{
 This dataset is used to transfer "original" municipality level datasets to the current redistricting.
 }
+\details{
+Last updated 2019-03-14
+}
 \keyword{datasets}

@@ -2,6 +2,8 @@
 #'
 #' This dataset is used to transfer "original" municipality level datasets to the current redistricting.
 #'
+#' Last updated 2019-03-14
+#'
 #' @format
 #' \describe{
 #' \item{municip_code_current}{The municipality code per today.}
@@ -16,10 +18,7 @@
 #' @source \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}
 "norway_municip_merging"
 
-#' Creates the norway_municip_merging (kommunesammenslaaing) data.table
-#'
-#' Last updated 2019-03-14
-#'
+# Creates the norway_municip_merging (kommunesammenslaaing) data.table
 gen_norway_municip_merging <- function() {
   # variables used in data.table functions in this function
   year_start <- NULL

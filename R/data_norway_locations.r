@@ -22,8 +22,7 @@
 #' @source \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}
 "norway_locations_original"
 
-#' Creates the norway_locations data.table
-#' @param is_current_municips Do you want the population file to contain the current municipalities (i.e. after municipal merging) or the original municipalities that existed in that year?
+# Creates the norway_locations data.table
 gen_norway_locations <- function(is_current_municips = TRUE) {
 
   # variables used by data.table

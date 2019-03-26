@@ -1,5 +1,5 @@
-#' Creates the norway_locations, norway_municip_merging, and norway_population data.table
-#' @param base_loc Location of data
+# Creates the norway_locations, norway_municip_merging, and norway_population data.table
+# @param base_loc Location of data
 gen_data_all <- function(base_loc = getwd()) {
   old_wd <- getwd()
   on.exit(setwd(old_wd))

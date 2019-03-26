@@ -8,11 +8,11 @@
 #' @source \url{http://stat-computing.org/dataexpo/2006/}
 "countries_nb_to_en"
 
-#' Norwegian to English country names
-#'
-#' This function returns a named vector.
-#' The names are Norwegian country names and the
-#' values are English country names.
+# Norwegian to English country names
+#
+# This function returns a named vector.
+# The names are Norwegian country names and the
+# values are English country names.
 gen_countries_nb_to_en <- function() {
   faroeIslands <- paste0("F", nor_char$ae, "r", nor_char$OE, "yene")
   austria <- paste0(nor_char$OE, "sterrike")

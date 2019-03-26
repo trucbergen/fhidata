@@ -43,9 +43,8 @@
 "norway_population_original"
 
 
-#' Creates the population dataset
-#' https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/
-#' @param is_current_municips Do you want the population file to contain the current municipalities (i.e. after municipal merging) or the original municipalities that existed in that year?
+# Creates the population dataset
+# https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/
 #' @import data.table
 gen_norway_population <- function(is_current_municips = TRUE) {
 
