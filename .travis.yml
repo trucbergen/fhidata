@@ -33,6 +33,16 @@ r_packages:
 - lintr
 - styler
 - devtools
+- data.table
+- stringr
+- glue
+- lubridate
+- readxl
+- zoo
+- crayon
+- fs
+- utils
+
 before_install:
 - bash travis/make.sh
 before_script:

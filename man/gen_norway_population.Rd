@@ -5,13 +5,10 @@
 \title{Creates the population dataset
 https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/}
 \usage{
-gen_norway_population(is_current_municips = TRUE,
-  save_loc = file.path("inst", "createddata"))
+gen_norway_population(is_current_municips = TRUE)
 }
 \arguments{
 \item{is_current_municips}{Do you want the population file to contain the current municipalities (i.e. after municipal merging) or the original municipalities that existed in that year?}
-
-\item{save_loc}{Location to save file to}
 }
 \description{
 Creates the population dataset

@@ -46,10 +46,8 @@
 #' Creates the population dataset
 #' https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/
 #' @param is_current_municips Do you want the population file to contain the current municipalities (i.e. after municipal merging) or the original municipalities that existed in that year?
-#' @param save_loc Location to save file to
 #' @import data.table
-gen_norway_population <- function(is_current_municips = TRUE,
-                                  save_loc = file.path("inst", "createddata")) {
+gen_norway_population <- function(is_current_municips = TRUE) {
 
   # variables used in data.table functions in this function
   . <- NULL
@@ -240,10 +238,6 @@ gen_norway_population <- function(is_current_municips = TRUE,
   setorderv(pop, final_order)
   setcolorder(pop, final_order)
   setnames(pop, "municip_code", "location_code")
-
-  if (dir.exists(save_loc)) {
-    try(saveRDS(pop, file.path(save_loc, file_name)), TRUE)
-  }
 
   return(invisible(pop))
 }

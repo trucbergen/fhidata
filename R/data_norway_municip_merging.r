@@ -20,7 +20,6 @@
 #'
 #' Last updated 2019-03-14
 #'
-#' @import data.table
 gen_norway_municip_merging <- function() {
   # variables used in data.table functions in this function
   year_start <- NULL
