@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates the norway_locations, norway_municip_merging, and norway_population data.table — gen_data • fhidata</title>
+<title>Names of areas in Norway that currently exist. — norway_locations_current • fhidata</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Creates the norway_locations, norway_municip_merging, and norway_population data.table — gen_data" />
+<meta property="og:title" content="Names of areas in Norway that currently exist. — norway_locations_current" />
 
-<meta property="og:description" content="Creates the norway_locations, norway_municip_merging, and norway_population data.table" />
+<meta property="og:description" content="Names of areas in Norway that currently exist." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.3.20</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.3.26</span>
       </span>
     </div>
 
@@ -106,35 +106,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates the norway_locations, norway_municip_merging, and norway_population data.table</h1>
+    <h1>Names of areas in Norway that currently exist.</h1>
     
-    <div class="hidden name"><code>gen_data.Rd</code></div>
+    <div class="hidden name"><code>norway_locations_current.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates the norway_locations, norway_municip_merging, and norway_population data.table</p>
+    <p>Names of areas in Norway that currently exist.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>gen_data</span>(<span class='kw'>save_loc</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='st'>"inst"</span>, <span class='st'>"createddata"</span>))</pre>
+    <pre class="usage"><span class='no'>norway_locations_current</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <dl class='dl-horizontal'>
+<dt>municip_code</dt><dd><p>Municipality code.</p></dd>
+<dt>municip_name</dt><dd><p>Municipality name.</p></dd>
+<dt>county_code</dt><dd><p>County code.</p></dd>
+<dt>county_name</dt><dd><p>County name.</p></dd>
+</dl>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>save_loc</th>
-      <td><p>Location of data</p></td>
-    </tr>
-    </table>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://snl.no/kommunenummer'>https://snl.no/kommunenummer</a></p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
+          </ul>
 
   </div>
 </div>

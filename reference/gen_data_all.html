@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates the norway_locations data.table — gen_norway_locations • fhidata</title>
+<title>Creates the norway_locations, norway_municip_merging, and norway_population data.table — gen_data_all • fhidata</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Creates the norway_locations data.table — gen_norway_locations" />
+<meta property="og:title" content="Creates the norway_locations, norway_municip_merging, and norway_population data.table — gen_data_all" />
 
-<meta property="og:description" content="Creates the norway_locations data.table" />
+<meta property="og:description" content="Creates the norway_locations, norway_municip_merging, and norway_population data.table" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,25 +106,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates the norway_locations data.table</h1>
+    <h1>Creates the norway_locations, norway_municip_merging, and norway_population data.table</h1>
     
-    <div class="hidden name"><code>gen_norway_locations.Rd</code></div>
+    <div class="hidden name"><code>gen_data_all.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates the norway_locations data.table</p>
+    <p>Creates the norway_locations, norway_municip_merging, and norway_population data.table</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>gen_norway_locations</span>(<span class='kw'>is_current_municips</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>gen_data_all</span>(<span class='kw'>base_loc</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/getwd'>getwd</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>is_current_municips</th>
-      <td><p>Do you want the population file to contain the current municipalities (i.e. after municipal merging) or the original municipalities that existed in that year?</p></td>
+      <th>base_loc</th>
+      <td><p>Location of data</p></td>
     </tr>
     </table>
     

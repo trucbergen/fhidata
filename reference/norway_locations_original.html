@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates the norway_locations data.table — gen_norway_locations • fhidata</title>
+<title>Names of areas in Norway that previously existed. — norway_locations_original • fhidata</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Creates the norway_locations data.table — gen_norway_locations" />
+<meta property="og:title" content="Names of areas in Norway that previously existed. — norway_locations_original" />
 
-<meta property="og:description" content="Creates the norway_locations data.table" />
+<meta property="og:description" content="Names of areas in Norway that previously existed." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,35 +106,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates the norway_locations data.table</h1>
+    <h1>Names of areas in Norway that previously existed.</h1>
     
-    <div class="hidden name"><code>gen_norway_locations.Rd</code></div>
+    <div class="hidden name"><code>norway_locations_original.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates the norway_locations data.table</p>
+    <p>Names of areas in Norway that previously existed.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>gen_norway_locations</span>(<span class='kw'>is_current_municips</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='no'>norway_locations_original</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <dl class='dl-horizontal'>
+<dt>municip_code</dt><dd><p>Municipality code.</p></dd>
+<dt>municip_name</dt><dd><p>Municipality name.</p></dd>
+<dt>county_code</dt><dd><p>County code.</p></dd>
+<dt>county_name</dt><dd><p>County name.</p></dd>
+</dl>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>is_current_municips</th>
-      <td><p>Do you want the population file to contain the current municipalities (i.e. after municipal merging) or the original municipalities that existed in that year?</p></td>
-    </tr>
-    </table>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer'>https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer</a></p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
+          </ul>
 
   </div>
 </div>

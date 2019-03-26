@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates the norway_locations data.table — gen_norway_locations • fhidata</title>
+<title>Population in Norway. — norway_population_original • fhidata</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Creates the norway_locations data.table — gen_norway_locations" />
+<meta property="og:title" content="Population in Norway. — norway_population_original" />
 
-<meta property="og:description" content="Creates the norway_locations data.table" />
+<meta property="og:description" content="We conveniently package population data taken from Statistics Norway.
+This data is licensed under the Norwegian Licence for
+Open Government Data (NLOD) 2.0." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,35 +108,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates the norway_locations data.table</h1>
+    <h1>Population in Norway.</h1>
     
-    <div class="hidden name"><code>gen_norway_locations.Rd</code></div>
+    <div class="hidden name"><code>norway_population_original.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates the norway_locations data.table</p>
+    <p>We conveniently package population data taken from Statistics Norway.
+This data is licensed under the Norwegian Licence for
+Open Government Data (NLOD) 2.0.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>gen_norway_locations</span>(<span class='kw'>is_current_municips</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='no'>norway_population_original</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <dl class='dl-horizontal'>
+<dt>year</dt><dd><p>Year.</p></dd>
+<dt>location_code</dt><dd><p>The location code.</p></dd>
+<dt>level</dt><dd><p>National/County/Municipality.</p></dd>
+<dt>age</dt><dd><p>1 year ages from 0 to 105.</p></dd>
+<dt>pop</dt><dd><p>Number of people.</p></dd>
+<dt>imputed</dt><dd><p>FALSE if real data. TRUE if it is the last real data point carried forward.</p></dd>
+</dl>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>is_current_municips</th>
-      <td><p>Do you want the population file to contain the current municipalities (i.e. after municipal merging) or the original municipalities that existed in that year?</p></td>
-    </tr>
-    </table>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/'>https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/</a></p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This dataset contains national/county/municipality level population data
+for every age (0 to 105 years old) from 2006. The counties and
+municipalities are not updated for the current redistricting.</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>
