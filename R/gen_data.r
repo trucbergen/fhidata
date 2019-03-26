@@ -361,6 +361,7 @@ gen_norway_population <- function(is_current_municips = TRUE,
 #' - norway_municip_merging: Used to convert original municipalities into current municipalities
 #' - norway_map_counties: Long/lats for Norwegian county borders
 #' - norway_map_municips: Long/lats for Norwegian municipality borders
+#' - countries_nb_to_en: Norwegian and English country names
 #'
 #' Some of these datasets (`norway_population`, `norway_locations`, and `norway_locations_long`) have the option to display the data using municipality codes as they were originally or as they are today (after the merging of municipalities).
 #'
@@ -374,6 +375,7 @@ gen_norway_population <- function(is_current_municips = TRUE,
 #' - norway_municip_merging
 #' - norway_map_counties
 #' - norway_map_municips
+#' - countries_nb_to_en
 #' @param is_current_municips If this is `NULL`, then `name` is used exclusively. If this is ``, then `name=name_current`, and if this is `` then `name=name_original`. This lets you work more programatically.
 #' @param ... Not used currently
 #' @examples
@@ -381,7 +383,7 @@ gen_norway_population <- function(is_current_municips = TRUE,
 #' get_data("norway_population_current")
 #' @md
 #' @export
-get_data <- function(name, is_current_municips = NULL, ...) {
+get_data <- function(name=NULL, is_current_municips = NULL, ...) {
   if (is.null(is_current_municips)) {
     working_name <- name
   } else {
@@ -398,12 +400,18 @@ get_data <- function(name, is_current_municips = NULL, ...) {
     "norway_locations_long_original",
     "norway_municip_merging",
     "norway_map_counties",
-    "norway_map_municips"
+    "norway_map_municips",
+    "countries_nb_to_en"
   )
-
   valid_names_with_ticks <- glue::glue("\u2713 {valid_names}")
+
+  if(is.null(name)){
+    message(glue::glue("Available datasets:\n{glue::glue_collapse(valid_names_with_ticks,sep='\n')}"))
+    return(invisible(valid_names))
+  }
+
   if (!working_name %in% valid_names) {
-    stop(glue::glue("\n\n\u2716 '{name}' -> '{working_name}' not in: \n{glue::collapse(valid_names_with_ticks,sep='\n')}"))
+    stop(glue::glue("\n\n\u2716 '{name}' -> '{working_name}' not in: \n{glue::glue_collapse(valid_names_with_ticks,sep='\n')}"))
   }
 
   if (is.null(data_storage[[working_name]])) {
@@ -429,4 +437,9 @@ gen_data <- function(save_loc = file.path("inst", "createddata")) {
 
   gen_norway_population(is_current_municips = TRUE, save_loc)
   gen_norway_population(is_current_municips = FALSE, save_loc)
+
+  countries_nb_to_en(save_loc = save_loc)
+
+  # norway_map_counties(save_loc = save_loc)
+  # norway_map_municips(save_loc = save_loc)
 }

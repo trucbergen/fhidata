@@ -4,7 +4,7 @@
 \alias{get_data}
 \title{Get data.table sets from this package}
 \usage{
-get_data(name, is_current_municips = NULL, ...)
+get_data(name = NULL, is_current_municips = NULL, ...)
 }
 \arguments{
 \item{name}{The name of the dataset. This interacts with \code{is_current_municips}.
@@ -15,6 +15,8 @@ If \code{is_current_municips} is \code{TRUE}/`FALSE``, then the following option
 \item norway_locations_long: One column for 'code', one column for 'name'
 \item norway_municip_merging: Used to convert original municipalities into current municipalities
 \item norway_map_counties: Long/lats for Norwegian county borders
+\item norway_map_municips: Long/lats for Norwegian municipality borders
+\item countries_nb_to_en: Norwegian and English country names
 }
 
 Some of these datasets (\code{norway_population}, \code{norway_locations}, and \code{norway_locations_long}) have the option to display the data using municipality codes as they were originally or as they are today (after the merging of municipalities).
@@ -29,6 +31,8 @@ If \code{is_current_municips} is `NULL``, then the following options are allowed
 \item norway_locations_long_original
 \item norway_municip_merging
 \item norway_map_counties
+\item norway_map_municips
+\item countries_nb_to_en
 }}
 
 \item{is_current_municips}{If this is \code{NULL}, then \code{name} is used exclusively. If this is \code{, then `name=name_current`, and if this is } then \code{name=name_original}. This lets you work more programatically.}
@@ -39,6 +43,6 @@ If \code{is_current_municips} is `NULL``, then the following options are allowed
 Get data.table sets from this package
 }
 \examples{
-get_data("norway_population", is_current_municips=TRUE)
+get_data("norway_population", is_current_municips = TRUE)
 get_data("norway_population_current")
 }
