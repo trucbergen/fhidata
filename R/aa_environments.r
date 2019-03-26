@@ -1,8 +1,3 @@
-#' Environment to store data.tables
-#' test
-data_storage <- new.env(parent = emptyenv())
-data_storage$x <- 1
-
 #' Norwegian characters in unicode
 #' @export nor_char
 nor_char <- new.env(parent = emptyenv())

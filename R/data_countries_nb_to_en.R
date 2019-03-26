@@ -1,10 +1,19 @@
+#' Country names
+#'
+#' @format
+#' \describe{
+#' \item{nb}{Country name in Norwegian bokmal.}
+#' \item{en}{Country name in English.}
+#' }
+#' @source \url{http://stat-computing.org/dataexpo/2006/}
+"countries_nb_to_en"
+
 #' Norwegian to English country names
 #'
 #' This function returns a named vector.
 #' The names are Norwegian country names and the
 #' values are English country names.
-#' @export
-countries_nb_to_en <- function(save_loc = file.path("inst", "createddata")) {
+gen_countries_nb_to_en <- function() {
   faroeIslands <- paste0("F", nor_char$ae, "r", nor_char$OE, "yene")
   austria <- paste0(nor_char$OE, "sterrike")
   southAfrica <- paste0("S", nor_char$oe, "r-Afrika")
@@ -162,10 +171,6 @@ countries_nb_to_en <- function(save_loc = file.path("inst", "createddata")) {
   )
 
   retval <- data.table(nb=names(vec),en=vec)
-
-  if (dir.exists(save_loc)) {
-    try(saveRDS(retval, file.path(save_loc, "countries_nb_to_en.rds")), TRUE)
-  }
 
   return(invisible(retval))
 }

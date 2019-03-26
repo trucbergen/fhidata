@@ -1,5 +1,5 @@
 ## Test environments
-* local Debian 9.5 install, R 3.5.2
+* local Debian 9.5 install, R 3.5.3
 * ubuntu 14.04 (on travis-ci), R 3.5.2
 * win-builder (devel and release)
 

@@ -4,7 +4,7 @@ author: "Richard White"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Datasets}
+  %\VignetteIndexEntry{datasets}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,43 +16,122 @@ knitr::opts_chunk$set(
 )
 ```
 
-There are four datasets available:
+# Dev Installation
 
-- norway_population: Population data
-- norway_locations: One row for each municipality containing columns 'municip_code', 'municip_name', 'county_code', and 'county_name'
-- norway_locations_long: One column for 'code', one column for 'name'
-- norway_municip_merging: Used to convert original municipalities into current municipalities
+If you want to install the dev version, run `usethis::edit_r_profile()` to edit your `.Rprofile`. Then write in:
 
-Some of these datasets (`norway_population`, `norway_locations`, and `norway_locations_long`) have the option to display the data using municipality codes as they were originally or as they are today (after the merging of municipalities). 
-
-There are two ways to obtain the data, either by specifying the entire dataset's name (`dataset_current` or `dataset_original`) or by using the argument `is_current_municips`.
-
-```{r}
-fhidata::get_data("norway_population", is_current_municips=TRUE)
-fhidata::get_data("norway_population_current")
-
-fhidata::get_data("norway_population", is_current_municips=FALSE)
-fhidata::get_data("norway_population_original")
+```
+options(repos=structure(c(
+  FHI="https://folkehelseinstituttet.github.io/drat/",
+  CRAN="https://cran.rstudio.com"
+)))
 ```
 
-Here we can see the current available datasets:
+Save the file and restart R. This will allow you to install `fhidata` from the FHI registry instead of CRAN.
 
-```{r}
-fhidata::get_data("norway_population", is_current_municips=TRUE)
-fhidata::get_data("norway_locations", is_current_municips=TRUE)
-fhidata::get_data("norway_locations_long", is_current_municips=TRUE)
-fhidata::get_data("norway_municip_merging")
+# Population Datasets
+
+We conveniently package population data taken from Statistics Norway. This data is licensed under the Norwegian Licence for Open Government Data (NLOD) 2.0.
+
+## norway_population_current
+
+This dataset contains national/county/municipality level population data for every age (0 to 105 years old) from 2006. The counties and municipalities are updated for the current redistricting.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::norway_population_current)
 ```
 
+## norway_population_original
 
-```{r}
+This dataset contains national/county/municipality level population data for every age (0 to 105 years old) from 2006. The counties and municipalities are not updated for the current redistricting.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::norway_population_original)
+```
+
+# Location Codes/Names Datasets
+
+We provide location names and location codes in multiple formats.
+
+## norway_locations_long_current
+
+This dataset contains national/county/municipality codes and names. The counties and municipalities are updated for the current redistricting.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::norway_locations_long_current)
+```
+
+## norway_locations_long_original
+
+This dataset contains national/county/municipality codes and names. The counties and municipalities are not updated for the current redistricting.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::norway_locations_long_original)
+```
+
+## norway_locations_current
+
+This dataset contains county codes/names and municipality codes/names for each municipality. The counties and municipalities are updated for the current redistricting.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::norway_locations_current)
+```
+
+## norway_locations_original
+
+This dataset contains county codes/names and municipality codes/names for each municipality. The counties and municipalities are not updated for the current redistricting.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::norway_locations_original)
+```
+
+## norway_municip_merging
+
+This dataset is used to transfer "original" municipality level datasets to the current redistricting.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::norway_municip_merging)
+```
+
+# English to Norwegian Datasets
+
+We provide some datasets for easy Norwegian to English translations.
+
+## countries_nb_to_en
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::countries_nb_to_en)
+```
+
+# Maps and Map Datasets
+
+We conveniently package map datasets for Norway (taken from Geonorge) that can be used in ggplot2 without needing any geo libraries. This data is licensed under Creative Commons 0.
+
+## County Maps (norway_map_counties)
+
+```{r fig.height=7, fig.width=7}
 library(ggplot2)
 library(data.table)
 
-pd <- fhidata::get_data("norway_map_counties")
+pd <- fhidata::norway_map_counties
 
 q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
+## Municipality Maps (norway_map_municips)
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_municips
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q

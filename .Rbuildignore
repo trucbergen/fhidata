@@ -1,3 +1,6 @@
+^data-raw$
+^Meta$
+^doc$
 inst/extdata/Personer*
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -7,9 +10,7 @@ README.md
 travis/*
 .Rhistory
 .DS_Store
-.Rhistory
 .gitignore
-.travis.yml
 R/.Rapp.history
 inst/.DS_Store
 inst/extdata
@@ -25,3 +26,4 @@ pkgdown/*
 LICENSE
 cran-comments.md
 ^.*\.Rcheck
+data-raw/*
