@@ -1,5 +1,5 @@
 context("fhidata")
 
-test_that("Create org::PROJ$SHARED_TODAY", {
+test_that("Testing", {
   testthat::expect_equal(1, 1)
 })
