@@ -27,7 +27,7 @@ gen_data_all <- function(base_loc) {
   save(countries_nb_to_en, file = file.path(base_loc, "countries_nb_to_en.rda"))
 
   # norway_map_counties <- gen_norway_map_counties()
-  # save(norway_map_counties, file=file.path(base_loc,"data","norway_map_counties.rda"), compress = "xz")
+  # save(norway_map_counties, file=file.path("/git","/fhidata","data","norway_map_counties.rda"), compress = "xz")
   # norway_map_municips <-  gen_norway_map_municips()
-  # save(norway_map_municips, file=file.path(base_loc,"data","norway_map_municips.rda"), compress = "xz")
+  # save(norway_map_municips, file=file.path("/git","/fhidata","data","norway_map_municips.rda"), compress = "xz")
 }

@@ -13,14 +13,7 @@ This is a resubmission. In this version I have:
 
 ## R CMD check results
 
-0 errors | 0 warnings
-
-Notes: 
-
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: 'Richard White <w@rwhite.no>'
-
-New submission
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 

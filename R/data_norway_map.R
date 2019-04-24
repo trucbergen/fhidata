@@ -56,7 +56,7 @@ gen_norway_map_counties <- function() {
   id <- NULL
   location_code <- NULL
 
-  require_namespace(c("geojsonio", "broom", "rmapshaper"))
+  require_namespace(c("geojsonio", "broom", "rmapshaper","sp"))
 
   spdf <- geojsonio::geojson_read(
     system.file("extdata", "Fylker19.geojson", package = "fhidata"),
@@ -70,6 +70,15 @@ gen_norway_map_counties <- function() {
   setDT(spdf_fortified)
   spdf_fortified[, location_code := sprintf("county%s", id)]
 
+  # convert from UTM to latlong
+  utm <- spdf_fortified[,c("long","lat")]
+  sputm <- sp::SpatialPoints(utm, proj4string=sp::CRS("+proj=utm +zone=33 +datum=WGS84")  )
+  spgeo <- sp::spTransform(sputm, sp::CRS("+proj=longlat +datum=WGS84"))
+  spgeo <- as.data.table(spgeo)
+
+  spdf_fortified[,long:=spgeo$long]
+  spdf_fortified[,lat:=spgeo$lat]
+
   return(invisible(spdf_fortified))
 }
 
@@ -77,7 +86,7 @@ gen_norway_map_municips <- function() {
   id <- NULL
   location_code <- NULL
 
-  require_namespace(c("geojsonio", "broom", "rmapshaper"))
+  require_namespace(c("geojsonio", "broom", "rmapshaper","sp"))
 
   spdf <- geojsonio::geojson_read(
     system.file("extdata", "Kommuner19.geojson", package = "fhidata"),
@@ -90,6 +99,15 @@ gen_norway_map_municips <- function() {
 
   setDT(spdf_fortified)
   spdf_fortified[, location_code := sprintf("municip%s", formatC(as.numeric(id), width = 4, flag = "0"))]
+
+  # convert from UTM to latlong
+  utm <- spdf_fortified[,c("long","lat")]
+  sputm <- sp::SpatialPoints(utm, proj4string=sp::CRS("+proj=utm +zone=33 +datum=WGS84")  )
+  spgeo <- sp::spTransform(sputm, sp::CRS("+proj=longlat +datum=WGS84"))
+  spgeo <- as.data.table(spgeo)
+
+  spdf_fortified[,long:=spgeo$long]
+  spdf_fortified[,lat:=spgeo$lat]
 
   return(invisible(spdf_fortified))
 }
