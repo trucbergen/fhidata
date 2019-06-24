@@ -2,8 +2,8 @@ Package: fhidata
 Title: Structural Data for Norway
 Version: 2019.5.19
 Authors@R: person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre"))
-Description: Provides structural data for Norway. Datasets relating to maps, population in municipalities, municipality/county matching, and how different municipalities have merged/redistricted over time from 2006 to 2019.
-Depends: R (>= 3.3.0)
+Description: Provides structural data for Norway. Datasets relating to maps, population in municipalities, vaccination coverage for childhood vaccines, municipality/county matching, and how different municipalities have merged/redistricted over time from 2006 to 2019.
+Depends: R (>= 3.5.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -25,6 +25,7 @@ Suggests: testthat,
     crayon,
     fs,
     utils,
-    sp
+    sp,
+    forcats
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

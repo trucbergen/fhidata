@@ -1,10 +1,4 @@
-## Resubmission
-
-This is a resubmission. In this version I have:
-
-- Started the Description with "Provides..." and wrote the actual period "from 2006 to 2019".
-- Removed all functions from the export/NAMESPACE.
-- Ensured that all functions (even though none of them are exported) do not write by default.
+## Sumission
 
 ## Test environments
 * local Debian 9.5 install, R 3.5.3

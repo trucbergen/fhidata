@@ -26,6 +26,9 @@ gen_data_all <- function(base_loc) {
   countries_nb_to_en <- gen_countries_nb_to_en()
   save(countries_nb_to_en, file = file.path(base_loc, "countries_nb_to_en.rda"))
 
+  norway_childhood_vax <- gen_norway_childhood_vax(norway_locations_long_current)
+  save(norway_childhood_vax, file = file.path(base_loc, "norway_childhood_vax.rda"), compress = "xz")
+
   # norway_map_counties <- gen_norway_map_counties()
   # save(norway_map_counties, file=file.path("/git","/fhidata","data","norway_map_counties.rda"), compress = "xz")
   # norway_map_municips <-  gen_norway_map_municips()

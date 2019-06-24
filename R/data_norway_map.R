@@ -55,6 +55,8 @@
 gen_norway_map_counties <- function() {
   id <- NULL
   location_code <- NULL
+  long <- NULL
+  lat <- NULL
 
   require_namespace(c("geojsonio", "broom", "rmapshaper", "sp"))
 
@@ -85,6 +87,8 @@ gen_norway_map_counties <- function() {
 gen_norway_map_municips <- function() {
   id <- NULL
   location_code <- NULL
+  long <- NULL
+  lat <- NULL
 
   require_namespace(c("geojsonio", "broom", "rmapshaper", "sp"))
 
