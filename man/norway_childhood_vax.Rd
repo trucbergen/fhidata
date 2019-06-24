@@ -19,11 +19,11 @@
 norway_childhood_vax
 }
 \description{
-We conveniently package population data taken from "Kommunehelsa statistikkbank".
+We conveniently package vaccine coverage data taken from "Kommunehelsa statistikkbank".
 This data was last updated on 2019-04-09.
 }
 \details{
-This dataset contains national/county/municipality level vaccination coverage rates
+This dataset contains national/county/municipality level (5 year average) vaccination coverage rates
 for 16 year olds for the childhood vaccination program (diphtheria, hpv, measles,
 mumps, poliomyelitis, pertussis, rubella, tetanus).
 

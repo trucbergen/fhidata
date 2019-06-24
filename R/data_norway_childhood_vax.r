@@ -1,9 +1,9 @@
 #' Childhood vaccination rates in Norway
 #'
-#' We conveniently package population data taken from "Kommunehelsa statistikkbank".
+#' We conveniently package vaccine coverage data taken from "Kommunehelsa statistikkbank".
 #' This data was last updated on 2019-04-09.
 #'
-#' This dataset contains national/county/municipality level vaccination coverage rates
+#' This dataset contains national/county/municipality level (5 year average) vaccination coverage rates
 #' for 16 year olds for the childhood vaccination program (diphtheria, hpv, measles,
 #' mumps, poliomyelitis, pertussis, rubella, tetanus).
 #'
@@ -28,21 +28,18 @@ gen_norway_childhood_vax <- function(norway_locations_long_current) {
 
   # variables used in data.table functions in this function
   . <- NULL
-  value <- NULL
+  GEO <- NULL
+  location_code <- NULL
+  AAR <- NULL
+  SPVFLAGG <- NULL
+  ALDER <- NULL
+  proportion <- NULL
+  RATE <- NULL
+  vax <- NULL
+  VAKSINE <- NULL
+  national <- NULL
   age <- NULL
-  Var2 <- NULL
-  agecont <- NULL
-  pop <- NULL
-  municip_code <- NULL
-  municip_code_current <- NULL
-  year_end <- NULL
-  level <- NULL
-  region <- NULL
-  variable <- NULL
-  agenum <- NULL
   imputed <- NULL
-  county_code <- NULL
-  municip_code_end <- NULL
   # end
 
   d <- fread(system.file("extdata", "SYSVAK_2019-04-09-14-17.csv", package = "fhidata"), encoding = "UTF-8")

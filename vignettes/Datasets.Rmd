@@ -49,6 +49,16 @@ This dataset contains national/county/municipality level population data for eve
 print(fhidata::norway_population_original)
 ```
 
+# Vaccine datasets
+
+## norway_childhood_vax
+
+We conveniently package vaccine coverage data taken from "Kommunehelsa statistikkbank". This data was last updated on 2019-04-09. This dataset contains national/county/municipality level (5 year average) vaccination coverage rates for 16 year olds for the childhood vaccination program (diphtheria, hpv, measles, mumps, poliomyelitis, pertussis, rubella, tetanus). Municipalities are updated for the 2019 redistricting.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(fhidata::norway_childhood_vax)
+```
+
 # Location Codes/Names Datasets
 
 We provide location names and location codes in multiple formats.
