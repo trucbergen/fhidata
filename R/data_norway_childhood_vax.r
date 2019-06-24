@@ -46,45 +46,49 @@ gen_norway_childhood_vax <- function(norway_locations_long_current) {
   # end
 
   d <- fread(system.file("extdata", "SYSVAK_2019-04-09-14-17.csv", package = "fhidata"), encoding = "UTF-8")
-  d[GEO==0,location_code:="norway"]
-  d[GEO>0 & GEO<100,location_code:=glue::glue("county{X}",X=formatC(GEO,width=2,flag="0"))]
-  d[GEO>=100,location_code:=glue::glue("municip{X}",X=formatC(GEO,width=4,flag="0"))]
-  d[GEO>=10000,location_code:=glue::glue("district{X}",X=formatC(GEO,width=6,flag="0"))]
+  d[GEO == 0, location_code := "norway"]
+  d[GEO > 0 & GEO < 100, location_code := glue::glue("county{X}", X = formatC(GEO, width = 2, flag = "0"))]
+  d[GEO >= 100, location_code := glue::glue("municip{X}", X = formatC(GEO, width = 4, flag = "0"))]
+  d[GEO >= 10000, location_code := glue::glue("district{X}", X = formatC(GEO, width = 6, flag = "0"))]
 
-  d[,year:=as.numeric(stringr::str_extract(AAR,"^[0-9][0-9][0-9][0-9]"))+2]
-  d <- d[SPVFLAGG==0 & ALDER=="16_16" & !stringr::str_detect(location_code,"district")]
-  d[,age:=16]
-  d[,proportion:=RATE/100]
-  d[,vax:=as.character(forcats::fct_recode(VAKSINE,
-                              "measles"="Meslinger",
-                              "diphtheria"="Difteri",
-                              "hpv"="HPV",
-                              "pertussis"="Kikhoste",
-                              "mumps"="Kusma",
-                              "poliomyelitis"="Poliomyelitt",
-                              "rubella"="Rodehunder",
-                              "tetanus"="Stivkrampe"))]
-  d <- d[,c("location_code","year","age","vax","proportion")]
-  d[,imputed:=FALSE]
-  national_results <- d[location_code=="norway",.(
-    national=mean(proportion)),
-    keyby=.(year,vax)]
+  d[, year := as.numeric(stringr::str_extract(AAR, "^[0-9][0-9][0-9][0-9]")) + 2]
+  d <- d[SPVFLAGG == 0 & ALDER == "16_16" & !stringr::str_detect(location_code, "district")]
+  d[, age := 16]
+  d[, proportion := RATE / 100]
+  d[, vax := as.character(forcats::fct_recode(VAKSINE,
+    "measles" = "Meslinger",
+    "diphtheria" = "Difteri",
+    "hpv" = "HPV",
+    "pertussis" = "Kikhoste",
+    "mumps" = "Kusma",
+    "poliomyelitis" = "Poliomyelitt",
+    "rubella" = "Rodehunder",
+    "tetanus" = "Stivkrampe"
+  ))]
+  d <- d[, c("location_code", "year", "age", "vax", "proportion")]
+  d[, imputed := FALSE]
+  national_results <- d[location_code == "norway", .(
+    national = mean(proportion)
+  ),
+  keyby = .(year, vax)
+  ]
   skeleton <- data.table(expand.grid(
-    location_code=norway_locations_long_current$location_code,
-    year=unique(d$year),
-    vax=unique(d$vax),
+    location_code = norway_locations_long_current$location_code,
+    year = unique(d$year),
+    vax = unique(d$vax),
     stringsAsFactors = F
   ))
-  d <- merge(d,skeleton,
-             by=c("location_code","year","vax"),all=T)
-  d <- merge(d,national_results,by=c("year","vax"))
-  d[is.na(age),age:=16]
-  d[is.na(proportion),imputed:=TRUE]
-  d[is.na(proportion),proportion:=national]
-  d[,national:=NULL]
-  d <- d[location_code!="norge"]
+  d <- merge(d, skeleton,
+    by = c("location_code", "year", "vax"), all = T
+  )
+  d <- merge(d, national_results, by = c("year", "vax"))
+  d[is.na(age), age := 16]
+  d[is.na(proportion), imputed := TRUE]
+  d[is.na(proportion), proportion := national]
+  d[, national := NULL]
+  d <- d[location_code != "norge"]
 
-  setcolorder(d,c("year","location_code","age","vax","proportion","imputed"))
+  setcolorder(d, c("year", "location_code", "age", "vax", "proportion", "imputed"))
 
   return(invisible(d))
 }
