@@ -5,6 +5,9 @@ gen_data_all <- function(base_loc) {
   on.exit(setwd(old_wd))
   setwd(base_loc)
 
+  days <- gen_days()
+  save(days, file = file.path(base_loc, "days.rda"), compress = "bzip2")
+
   norway_municip_merging <- gen_norway_municip_merging()
   save(norway_municip_merging, file = file.path(base_loc, "norway_municip_merging.rda"), compress = "bzip2")
 
