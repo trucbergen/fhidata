@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • fhidata</title>
+<title>Weather station list for max air temperatures in Norway — norway_weather_stations_max_air_temperature • fhidata</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,12 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Weather station list for max air temperatures in Norway — norway_weather_stations_max_air_temperature" />
+
+<meta property="og:description" content="We create a list of weather stations that contain max air temperature data for
+each municipality in Norway. When a municipality does not have a relevant weather
+stations, we choose a weather station that is close to the municipality." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -106,47 +111,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      
+    <h1>Weather station list for max air temperatures in Norway</h1>
+    
+    <div class="hidden name"><code>norway_weather_stations_max_air_temperature.Rd</code></div>
     </div>
 
-    <div id="fhidata-2019-6-24" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2019-6-24" class="anchor"></a>fhidata 2019.6.24<small> 2019-06-24 </small>
-</h1>
-<ul>
-<li>Including childhood vaccination data.</li>
-</ul>
-</div>
-    <div id="fhidata-2019-5-19" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2019-5-19" class="anchor"></a>fhidata 2019.5.19<small> 2019-05-21 </small>
-</h1>
-<ul>
-<li>Switching map files from UTM to lat/long coordinates.</li>
-</ul>
-</div>
-    <div id="fhidata-2019-4-2" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2019-4-2" class="anchor"></a>fhidata 2019.4.2<small> 2019-04-04 </small>
-</h1>
-<ul>
-<li>Submission to CRAN.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>We create a list of weather stations that contain max air temperature data for
+each municipality in Norway. When a municipality does not have a relevant weather
+stations, we choose a weather station that is close to the municipality.</p>
+    
+    </div>
 
+    <pre class="usage"><span class='no'>norway_weather_stations_max_air_temperature</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <dl class='dl-horizontal'>
+<dt>location_code</dt><dd><p>The location code.</p></dd>
+<dt>source</dt><dd><p>Station code.</p></dd>
+</dl>
+    
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://frost.met.no/'>https://frost.met.no/</a></p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Municipalities are updated for the 2019 redistricting.</p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#fhidata-2019-6-24">2019.6.24</a></li>
-        <li><a href="#fhidata-2019-5-19">2019.5.19</a></li>
-        <li><a href="#fhidata-2019-4-2">2019.4.2</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#format">Format</a></li>
 
+      <li><a href="#source">Source</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
+
+  </div>
 </div>
 
       <footer>
