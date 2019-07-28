@@ -29,7 +29,7 @@ gen_senorge <- function(norway_locations_current, norway_map_municips) {
 
   date <- stringr::str_remove_all(lubridate::today()-5,"-")
 
-  temp_dir <- fhi::temp_dir()
+  temp_dir <- tempdir()
   file <- glue::glue("seNorge2018_{date}.nc")
   temp_file <- fs::path(temp_dir,file)
 
