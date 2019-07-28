@@ -27,6 +27,7 @@ Suggests: testthat,
     utils,
     sp,
     forcats,
-    frostr
+    ncdf4,
+    SDMTools
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
