@@ -25,13 +25,13 @@ gen_senorge <- function(norway_locations_current, norway_map_municips) {
   long <- NULL
   lat <- NULL
 
-  require_namespace(c("ncdf4","SDMTools"))
+  require_namespace(c("ncdf4", "SDMTools"))
 
-  date <- stringr::str_remove_all(lubridate::today()-5,"-")
+  date <- stringr::str_remove_all(lubridate::today() - 5, "-")
 
   temp_dir <- tempdir()
   file <- glue::glue("seNorge2018_{date}.nc")
-  temp_file <- fs::path(temp_dir,file)
+  temp_file <- fs::path(temp_dir, file)
 
   on.exit(fs::file_delete(temp_file))
 
@@ -41,30 +41,30 @@ gen_senorge <- function(norway_locations_current, norway_map_municips) {
   )
 
   nc <- ncdf4::nc_open(temp_file)
-  dlong <- ncdf4::ncvar_get(nc,"lon")
-  dlat <- ncdf4::ncvar_get(nc,"lat")
+  dlong <- ncdf4::ncvar_get(nc, "lon")
+  dlat <- ncdf4::ncvar_get(nc, "lat")
 
   dlong <- reshape2::melt(dlong)
   setDT(dlong)
-  setnames(dlong,c("row","col","long"))
+  setnames(dlong, c("row", "col", "long"))
 
   dlat <- reshape2::melt(dlat)
   setDT(dlat)
-  setnames(dlat,c("row","col","lat"))
+  setnames(dlat, c("row", "col", "lat"))
 
-  gps <- merge(dlong,dlat,by=c("row","col"))
-  gps[,location_code:=as.character(NA)]
+  gps <- merge(dlong, dlat, by = c("row", "col"))
+  gps[, location_code := as.character(NA)]
 
-  for(i in norway_locations_current$municip_code){
+  for (i in norway_locations_current$municip_code) {
     message(i)
-    res <- SDMTools::pnt.in.poly(gps[,c("long","lat")],norway_map_municips[location_code==i,c("long","lat")])
-    indexes <- which(res$pip>0)
-    gps[indexes,location_code:=i]
+    res <- SDMTools::pnt.in.poly(gps[, c("long", "lat")], norway_map_municips[location_code == i, c("long", "lat")])
+    indexes <- which(res$pip > 0)
+    gps[indexes, location_code := i]
   }
 
-  gps[,year:=2019]
-  gps[,long:=NULL]
-  gps[,lat:=NULL]
+  gps[, year := 2019]
+  gps[, long := NULL]
+  gps[, lat := NULL]
   gps <- gps[!is.na(location_code)]
 
   return(invisible(gps))
