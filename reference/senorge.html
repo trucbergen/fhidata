@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Weather station list for max air temperatures in Norway — norway_weather_stations_max_air_temperature • fhidata</title>
+<title>1x1km grids to Norwegian municipalities — senorge • fhidata</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Weather station list for max air temperatures in Norway — norway_weather_stations_max_air_temperature" />
+<meta property="og:title" content="1x1km grids to Norwegian municipalities — senorge" />
 
-<meta property="og:description" content="We create a list of weather stations that contain max air temperature data for
-each municipality in Norway. When a municipality does not have a relevant weather
-stations, we choose a weather station that is close to the municipality." />
+<meta property="og:description" content="We classify the 1x1km grids from senorge into municipalities." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +63,7 @@ stations, we choose a weather station that is close to the municipality." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.7.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.7.29</span>
       </span>
     </div>
 
@@ -111,37 +109,40 @@ stations, we choose a weather station that is close to the municipality." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Weather station list for max air temperatures in Norway</h1>
+    <h1>1x1km grids to Norwegian municipalities</h1>
     
-    <div class="hidden name"><code>norway_weather_stations_max_air_temperature.Rd</code></div>
+    <div class="hidden name"><code>senorge.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>We create a list of weather stations that contain max air temperature data for
-each municipality in Norway. When a municipality does not have a relevant weather
-stations, we choose a weather station that is close to the municipality.</p>
+    <p>We classify the 1x1km grids from senorge into municipalities.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>norway_weather_stations_max_air_temperature</span></pre>
+    <pre class="usage"><span class='no'>senorge</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <dl class='dl-horizontal'>
-<dt>location_code</dt><dd><p>The location code.</p></dd>
-<dt>source</dt><dd><p>Station code.</p></dd>
+<dt>row</dt><dd><p>The row of the [X,Y,time] matrix.</p></dd>
+<dt>col</dt><dd><p>The column of the [X,Y,time] matrix.</p></dd>
+<dt>location_code</dt><dd><p>Municipality code that this 1x1km grid belongs to.</p></dd>
+<dt>year</dt><dd><p>The year that location_code corresponds to.</p></dd>
 </dl>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://frost.met.no/'>https://frost.met.no/</a></p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Municipalities are updated for the 2019 redistricting.</p>
+    <p><a href='http://thredds.met.no/thredds/catalog/senorge/seNorge_2018/Archive/catalog.html'>http://thredds.met.no/thredds/catalog/senorge/seNorge_2018/Archive/catalog.html</a></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>long</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>lat</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>))
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fhidata/topics/norway_map_municips'>norway_map_municips</a></span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span>()
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_map.html'>coord_quickmap</a></span>()
+<span class='no'>q</span></div><div class='img'><img src='senorge-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -150,9 +151,9 @@ stations, we choose a weather station that is close to the municipality.</p>
       <li><a href="#format">Format</a></li>
 
       <li><a href="#source">Source</a></li>
-
-      <li><a href="#details">Details</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
