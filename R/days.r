@@ -2,7 +2,7 @@
 #'
 #' @format
 #' \describe{
-#' \item{wkyr}{Isoweek-isoyear.}
+#' \item{yrwk}{Isoweek-isoyear.}
 #' \item{mon}{Date of Monday.}
 #' \item{tue}{Date of Tuesday.}
 #' \item{wed}{Date of Wednesday.}
@@ -16,7 +16,7 @@
 # Creates the norway_locations data.table
 gen_days <- function() {
   . <- NULL
-  wkyr <- NULL
+  yrwk <- NULL
   day <- NULL
   mon <- NULL
   tue <- NULL
@@ -27,15 +27,15 @@ gen_days <- function() {
   sun <- NULL
 
   days <- data.table(day = seq.Date(as.IDate("2000-01-01"), as.IDate("2030-01-01"), by = "days"))
-  days[, wkyr := format.Date(day, format = "%G-%V")]
-  days <- days[, .(mon = as.IDate(min(day))), by = .(wkyr)]
+  days[, yrwk := format.Date(day, format = "%G-%V")]
+  days <- days[, .(mon = as.IDate(min(day))), by = .(yrwk)]
   days[, tue := mon + 1]
   days[, wed := mon + 2]
   days[, thu := mon + 3]
   days[, fri := mon + 4]
   days[, sat := mon + 5]
   days[, sun := mon + 6]
-  days <- days[wkyr >= "2000-01"]
+  days <- days[yrwk >= "2000-01"]
 
   return(days)
 }

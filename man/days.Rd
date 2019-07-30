@@ -5,7 +5,7 @@
 \alias{days}
 \title{Dates of different days within isoweekyears}
 \format{\describe{
-\item{wkyr}{Isoweek-isoyear.}
+\item{yrwk}{Isoweek-isoyear.}
 \item{mon}{Date of Monday.}
 \item{tue}{Date of Tuesday.}
 \item{wed}{Date of Wednesday.}
