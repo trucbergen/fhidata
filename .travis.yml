@@ -23,9 +23,6 @@ addons:
       - libspatialite-dev
       - libgdal-dev
       - libjson-c-dev
-  apt:
-    - libnetcdf-dev
-    - netcdf-bin
 
 r_packages:
 - covr
@@ -46,6 +43,7 @@ r_packages:
 
 before_install:
 - bash travis/make.sh
+- sudo apt-get install libnetcdf-dev netcdf-bin
 before_script:
 - bash travis/data.sh
 after_success:
