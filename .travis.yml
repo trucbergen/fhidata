@@ -23,9 +23,9 @@ addons:
       - libspatialite-dev
       - libgdal-dev
       - libjson-c-dev
-      - libnetcdf-dev
-      - netcdf-bin
-      - netcdf-devel
+  apt:
+    - libnetcdf-dev
+    - netcdf-bin
 
 r_packages:
 - covr
