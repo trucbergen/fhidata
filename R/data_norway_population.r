@@ -225,21 +225,21 @@ gen_norway_population <- function(is_current_municips = TRUE) {
   counties[, level := "county"]
 
   # pull in full norwegian data
-  norway <- data.table(utils::read.csv(url("https://data.ssb.no/api/v0/dataset/59322.csv?lang=en"),stringsAsFactors = FALSE))
-  norway <- norway[sex=="0 Both sexes"]
-  norway[,sex:=NULL]
-  norway[,contents:=NULL]
-  norway[,x:=as.numeric(stringr::str_extract(age,"^[0-9][0-9][0-9]"))]
-  norway[,age:=NULL]
-  setnames(norway,c("year","pop","age"))
-  norway[,level:="national"]
-  norway[,municip_code:="norway"]
-  norway[,imputed:=FALSE]
-  for(i in missingYears){
-    popx <- norway[year==max(year)]
-    popx[,year:=i]
-    popx[,imputed:=TRUE]
-    norway <- rbind(norway,popx)
+  norway <- data.table(utils::read.csv(url("https://data.ssb.no/api/v0/dataset/59322.csv?lang=en"), stringsAsFactors = FALSE))
+  norway <- norway[sex == "0 Both sexes"]
+  norway[, sex := NULL]
+  norway[, contents := NULL]
+  norway[, x := as.numeric(stringr::str_extract(age, "^[0-9][0-9][0-9]"))]
+  norway[, age := NULL]
+  setnames(norway, c("year", "pop", "age"))
+  norway[, level := "national"]
+  norway[, municip_code := "norway"]
+  norway[, imputed := FALSE]
+  for (i in missingYears) {
+    popx <- norway[year == max(year)]
+    popx[, year := i]
+    popx[, imputed := TRUE]
+    norway <- rbind(norway, popx)
   }
 
   pop <- rbind(norway, counties, pop)
