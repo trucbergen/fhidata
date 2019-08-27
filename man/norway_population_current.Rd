@@ -24,8 +24,8 @@ This data is licensed under the Norwegian Licence for
 Open Government Data (NLOD) 2.0.
 }
 \details{
-This dataset contains national/county/municipality level population data
-for every age (0 to 105 years old) from 2006. The counties and
-municipalities are updated for the current redistricting.
+This dataset contains county/municipality level population data
+for every age (0 to 105 years old) from 2006, and national data from 1846.
+The counties and municipalities are updated for the current redistricting.
 }
 \keyword{datasets}

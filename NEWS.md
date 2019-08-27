@@ -1,3 +1,7 @@
+# fhidata 2019.8.27
+
+- Including national population data from 1846 (instead of 2006)
+
 # fhidata 2019.6.24
 
 - Including childhood vaccination data.

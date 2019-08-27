@@ -4,9 +4,9 @@
 #' This data is licensed under the Norwegian Licence for
 #' Open Government Data (NLOD) 2.0.
 #'
-#' This dataset contains national/county/municipality level population data
-#' for every age (0 to 105 years old) from 2006. The counties and
-#' municipalities are updated for the current redistricting.
+#' This dataset contains county/municipality level population data
+#' for every age (0 to 105 years old) from 2006, and national data from 1846.
+#' The counties and municipalities are updated for the current redistricting.
 #'
 #' @format
 #' \describe{
@@ -65,6 +65,9 @@ gen_norway_population <- function(is_current_municips = TRUE) {
   imputed <- NULL
   county_code <- NULL
   municip_code_end <- NULL
+  sex <- NULL
+  contents <- NULL
+  x <- NULL
   # end
 
   popFiles <- c(
@@ -221,15 +224,23 @@ gen_norway_population <- function(is_current_municips = TRUE) {
   )]
   counties[, level := "county"]
 
-  norway <- pop[, .(
-    pop = sum(pop)
-  ), keyby = .(
-    year,
-    age,
-    imputed
-  )]
-  norway[, municip_code := "norway"]
-  norway[, level := "national"]
+  # pull in full norwegian data
+  norway <- data.table(utils::read.csv(url("https://data.ssb.no/api/v0/dataset/59322.csv?lang=en"),stringsAsFactors = FALSE))
+  norway <- norway[sex=="0 Both sexes"]
+  norway[,sex:=NULL]
+  norway[,contents:=NULL]
+  norway[,x:=as.numeric(stringr::str_extract(age,"^[0-9][0-9][0-9]"))]
+  norway[,age:=NULL]
+  setnames(norway,c("year","pop","age"))
+  norway[,level:="national"]
+  norway[,municip_code:="norway"]
+  norway[,imputed:=FALSE]
+  for(i in missingYears){
+    popx <- norway[year==max(year)]
+    popx[,year:=i]
+    popx[,imputed:=TRUE]
+    norway <- rbind(norway,popx)
+  }
 
   pop <- rbind(norway, counties, pop)
 
